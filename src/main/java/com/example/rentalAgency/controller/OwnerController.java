@@ -3,6 +3,7 @@ package com.example.rentalAgency.controller;
 import com.example.rentalAgency.model.Owner;
 import com.example.rentalAgency.services.implementation.OwnerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,17 +19,18 @@ public class OwnerController {
     private OwnerImpl ownerImpl;
 
     @PostMapping("/addOwner")
-    public ResponseEntity<Owner> addNewOwner(@RequestBody Owner owner){
-        return new ResponseEntity<>(ownerImpl.addOwner(owner), HttpStatus.OK);
+    public HttpStatus addNewOwner(@RequestBody Owner owner){
+        ownerImpl.addOwner(owner);
+        return HttpStatus.CREATED;
     }
 
     @GetMapping("/listAll")
-    public ResponseEntity<List<Owner>> listOwner(){
-        return new ResponseEntity<>(ownerImpl.findAllOwners(),HttpStatus.OK);
+    public Iterable<Owner> listOwner(){
+        return ownerImpl.findAllOwners();
     }
 
-    @DeleteMapping("/deleteOwner")
-    public ResponseEntity<String> deleteById(@RequestBody Long id){
+    @DeleteMapping("/deleteOwner/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable Long id){
         ownerImpl.deleteOwner(id);
         return new ResponseEntity<>("Deleted Successfully",HttpStatus.OK);
     }
