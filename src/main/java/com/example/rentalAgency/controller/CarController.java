@@ -1,6 +1,7 @@
 package com.example.rentalAgency.controller;
 
 import com.example.rentalAgency.model.Car;
+import com.example.rentalAgency.model.CarDTO;
 import com.example.rentalAgency.services.implementation.CarImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/car")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CarController {
 
     @Autowired
@@ -32,9 +34,19 @@ public class CarController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<Car>> findAll(){
-        return new ResponseEntity<>(carImpl.findAll(),HttpStatus.OK);
+    public Iterable<Car> findAll(){
+        return carImpl.findAll();
     }
 
+    @GetMapping("/listCars")
+    public List<CarDTO> findDto(){
+        return carImpl.findAllDto();
+    }
+
+    //endpointi per mapstruct
+//    @GetMapping("/test")
+//    public List<CarDTO> findAllDto(){
+//        return carImpl.testAllCars();
+//    }
 
 }
