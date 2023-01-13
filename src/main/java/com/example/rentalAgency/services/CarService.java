@@ -1,8 +1,8 @@
 package com.example.rentalAgency.services;
 
 import com.example.rentalAgency.model.Car;
-import com.example.rentalAgency.model.CarDTO;
-//import com.example.rentalAgency.model.CarDTO;
+import com.example.rentalAgency.dto.CarDTO;
+//import com.example.rentalAgency.dto.CarDTO;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public interface CarService {
 
     List<Car> findAllByModel(String name);
 
-    List<CarDTO> findAllDto();
+    Iterable<CarDTO> findAllDto();
 
 
 

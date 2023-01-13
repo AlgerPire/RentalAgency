@@ -1,7 +1,7 @@
 package com.example.rentalAgency.controller;
 
 import com.example.rentalAgency.model.Car;
-import com.example.rentalAgency.model.CarDTO;
+import com.example.rentalAgency.dto.CarDTO;
 import com.example.rentalAgency.services.implementation.CarImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,7 +39,8 @@ public class CarController {
     }
 
     @GetMapping("/listCars")
-    public List<CarDTO> findDto(){
+    public Iterable<CarDTO> findDto(){
+
         return carImpl.findAllDto();
     }
 
@@ -48,5 +49,6 @@ public class CarController {
 //    public List<CarDTO> findAllDto(){
 //        return carImpl.testAllCars();
 //    }
+
 
 }

@@ -1,4 +1,4 @@
-package com.example.rentalAgency.model;
+package com.example.rentalAgency.dto;
 
 import com.example.rentalAgency.model.enumeration.Gearbox;
 import com.example.rentalAgency.model.enumeration.Status;
@@ -33,4 +33,8 @@ import javax.persistence.*;
     private String brand;
     private String model;
     private String branchName;
+    private Gearbox gearbox;
+    private String imageUrl;
+    private Integer feePerDay;
+    private Integer mileage;
 }

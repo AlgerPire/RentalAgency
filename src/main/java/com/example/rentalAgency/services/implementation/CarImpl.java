@@ -1,9 +1,9 @@
 package com.example.rentalAgency.services.implementation;
 
 import com.example.rentalAgency.model.Car;
-//import com.example.rentalAgency.model.CarDTO;
+//import com.example.rentalAgency.dto.CarDTO;
 //import com.example.rentalAgency.model.CarMapper;
-import com.example.rentalAgency.model.CarDTO;
+import com.example.rentalAgency.dto.CarDTO;
 
 import com.example.rentalAgency.repository.CarRepository;
 import com.example.rentalAgency.services.CarService;
@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -75,7 +73,7 @@ public class CarImpl implements CarService {
     }
 
     @Override
-    public List<CarDTO> findAllDto() {
+    public Iterable<CarDTO> findAllDto() {
         return carRepository.findCarsDto();
     }
 }
