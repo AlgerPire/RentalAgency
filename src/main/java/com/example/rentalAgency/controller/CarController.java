@@ -12,13 +12,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/car")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class CarController {
 
     @Autowired
     private CarImpl carImpl;
 
-    @PostMapping("/addCar")
+    @PostMapping("/admin/addCar")
     public ResponseEntity<Car> addCar( Car car){
         return new ResponseEntity<>(carImpl.save(car), HttpStatus.OK);
     }

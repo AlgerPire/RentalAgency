@@ -20,8 +20,12 @@ public class OwnerController {
 
     @PostMapping("/addOwner")
     public HttpStatus addNewOwner(@RequestBody Owner owner){
-        ownerImpl.addOwner(owner);
-        return HttpStatus.CREATED;
+        if(ownerImpl.addOwner(owner)){
+            return HttpStatus.CREATED;
+        }
+        else {
+            return HttpStatus.CONFLICT;
+        }
     }
 
     @GetMapping("/listAll")

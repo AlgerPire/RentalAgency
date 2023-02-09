@@ -1,6 +1,7 @@
 package com.example.rentalAgency.services;
 
 import com.example.rentalAgency.model.Branch;
+import org.springframework.beans.factory.BeanFactory;
 
 import java.util.List;
 

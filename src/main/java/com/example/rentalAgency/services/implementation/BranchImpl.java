@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class BranchImpl implements BranchService {
+public class BranchImpl implements BranchService  {
 
     @Autowired
     private BranchRepository branchRepository;

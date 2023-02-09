@@ -26,10 +26,17 @@ public class OwnerImpl implements OwnerService {
     }
 
     @Override
-    public Owner addOwner(Owner owner) {
+    public boolean addOwner(Owner owner){
         String encodedPassword=this.passwordEncoder.encode(owner.getPassword());
-        owner.setPassword(encodedPassword);
-        return ownerRepository.save(owner);
+        String email = ownerRepository.findAllByEmailTest(owner.getEmail());
+        if(email==null){
+            owner.setPassword(encodedPassword);
+            ownerRepository.save(owner);
+            return true;
+        }
+       else {
+           return false;
+        }
     }
 
     @Override

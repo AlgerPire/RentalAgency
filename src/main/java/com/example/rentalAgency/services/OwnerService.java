@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface OwnerService {
 
-    Owner addOwner(Owner owner);
+    boolean addOwner(Owner owner);
 
     List<Owner> findAllOwners();
 
